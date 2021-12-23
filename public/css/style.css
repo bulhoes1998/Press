@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(34, 34, 34);
+    color: white;
+}
+
+.jumbotron{
+    border-style: hidden;
+    padding: 3%;
+}
+
+.article{
+    display: flex;
+}
+
+.article-img{
+    padding: 10px;
+    padding-top: 10px;
+    background-color: rgba(114, 113, 113, 0.342);
+    position: relative;
+    width: 340px;
+    height: 200px;
+    border-radius: 3px;
+}
+
+.article-img.img{
+    position: absolute;
+}
+img{
+    height: 180px;
+    width: auto;
+    border-radius: 3px;
+}

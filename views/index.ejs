@@ -1,0 +1,40 @@
+<%- include('partials/header.ejs'); %>
+<%- include('partials/home_navbar.ejs'); %>
+
+<body>
+    <div class="container">
+        <hr>
+        <div class="jumbotron form-control bg-light ">
+            <h1 class="display-4">Bem vindo!</h1>
+
+            <p class="lead">Este é um blog sobre as notícias mais quentes do mundo dos negócios.</p>
+
+            <hr class="my-4">
+
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+        <% articles.forEach(article=> {%>
+            <hr>
+            <div class="container article">
+                <div class="article-img">
+                <img src="<%= article.img%>">
+                </div>
+                <div class="container">
+                        <h3><%= article.title %></h3>
+                        <p><%= article.descricao %></p>
+                        <a class="btn btn-success" href="/<%=article.slug%>">Ler artigo</a>
+                </div>
+            </div>
+        <%})%>
+
+        <div class="row">
+            <div class="col col-12">
+                <a style="float: right;" href="/articles/page/2">Next >>></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('partials/footer.ejs'); %>

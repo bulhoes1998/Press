@@ -1,0 +1,52 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+
+        <div class="container">
+            <hr>
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <h2>Novo Artigo</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/admin/articles/save" onsubmit="validate(event)">
+                        <input class="form-control" type="text" name="title" placeholder="Defina o Título do Artigo"required="required"><br>
+                        <input class="form-control" type="text" name="img" placeholder="Insira o Link da Imagem" required="required">
+                        <br>
+                        <textarea class="form-control" name="body" placeholder="Escreva o artigo aqui"id="article"></textarea><br>
+                        <input class="form-control" type="text" name="descricao" placeholder="Insira a descricao do artigo" required="required">
+                        <br>
+                        <label>Categorias</label>
+                        <select name="category" class="form-control">
+                            <% categories.forEach((category)=> { %>
+                                <option value="<%= category.id %>">
+                                    <%= category.title %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <br>
+                        <button class="btn btn-success">Publicar</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>
+
+<%- include('../../partials/footer.ejs'); %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+
+    tinymce.init({
+        selector: "#article",
+        plugins: [
+                    "advlist autolink link image lists print preview hr searchreplace insertdatetime fullscreen media save table paste emoticons"
+                ]
+    })
+
+    function validate(event) {
+        if ((tinymce.EditorManager.get('article').getContent()) == '') {
+            alert('O corpo do artigo não pode ser em branco.');
+            event.preventDefault();
+        }
+    }
+</script>

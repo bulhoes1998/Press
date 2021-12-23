@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs'); %>
+<%- include('partials/home_navbar.ejs'); %>
+
+<body>
+    <div class="container">
+        <% result.articles.rows.forEach(article=> {%>
+            <hr>
+            <div class="container article">
+                <div class="article-img">
+                <img src="<%= article.img%>">
+                </div>
+                <div class="container">
+                        <h3><%= article.title %></h3>
+                        <p><%= article.descricao %></p>
+                        <a class="btn btn-success" href="/<%=article.slug%>">Ler artigo</a>
+                </div>
+            </div>
+            <br>
+        <%})%>
+
+        <% if(result.page > 2){%>
+            <div class="row">
+                <div class="col col-12">
+                    <a style="float: left;" href="/articles/page/<%= result.page - 1%>"> <<< Prev </a>
+        <%}else if(result.page == 2){%>
+            <div class="row">
+                <div class="col col-12">
+                    <a style="float: left;" href="/"> <<< Prev </a>
+        <%}%>
+        <% if(result.next){%>
+                    <a style="float: right;" href="/articles/page/<%= result.page + 1%>">Next >>></a>
+                </div>
+            </div>
+        <%}%>
+    </div>
+</body>
+
+<%- include('partials/footer.ejs'); %>
